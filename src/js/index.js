@@ -3,51 +3,53 @@ const lists = document.querySelectorAll('.list');
 
 function addTask() {
   const btn = document.querySelector('.add__btn');
-  const addBtn = document.querySelector('.add__item-btn');
-  const cancelBtn = document.querySelector('.cancel__item-btn');
-  const textarea = document.querySelector('.textarea');
-  const form = document.querySelector('.form');
+  // const addBtn = document.querySelector('.add__item-btn');
+  // const cancelBtn = document.querySelector('.cancel__item-btn');
+  // const textarea = document.querySelector('.textarea');
+  // const form = document.querySelector('.form');
+  const addPopup = document.querySelector('.todo-popup');
 
   // let value;
 
   btn.addEventListener('click', () => {
-    form.classList.remove('hidden-state');
-    btn.classList.add('hidden-state');
-    addBtn.classList.add('hidden-state');
+    addPopup.classList.remove('hidden-state');
+    // form.classList.remove('hidden-state');
+    // btn.classList.add('hidden-state');
+    // addBtn.classList.add('hidden-state');
 
-    textarea.addEventListener('input', (event) => {
-      let value = event.target.value;
+    // textarea.addEventListener('input', (event) => {
+    //   let value = event.target.value;
 
-      if (value) {
-        addBtn.classList.remove('hidden-state');
-      } else {
-        addBtn.classList.add('hidden-state');
-      }
-    });
+    //   if (value) {
+    //     addBtn.classList.remove('hidden-state');
+    //   } else {
+    //     addBtn.classList.add('hidden-state');
+    //   }
+    // });
   });
 
-  cancelBtn.addEventListener('click', () => {
-    // value = '';
-    // создать отдельную функциюю clear
-    textarea.value = '';
-    form.classList.add('hidden-state');
-    btn.classList.remove('hidden-state');
-  });
+  // cancelBtn.addEventListener('click', () => {
+  //   // value = '';
+  //   // создать отдельную функциюю clear
+  //   textarea.value = '';
+  //   form.classList.add('hidden-state');
+  //   btn.classList.remove('hidden-state');
+  // });
 
-  addBtn.addEventListener('click', () => {
-    const newItem = document.createElement('div');
-    newItem.classList.add('list__item');
-    newItem.draggable = true;
-    newItem.textContent = textarea.value;
-    lists[0].append(newItem);
+  // addBtn.addEventListener('click', () => {
+  //   const newItem = document.createElement('div');
+  //   newItem.classList.add('list__item');
+  //   newItem.draggable = true;
+  //   newItem.textContent = textarea.value;
+  //   lists[0].append(newItem);
 
-    // создать отдельную функциюю clear
-    textarea.value = '';
-    form.classList.add('hidden-state');
-    btn.classList.remove('hidden-state');
+  //   // создать отдельную функциюю clear
+  //   textarea.value = '';
+  //   form.classList.add('hidden-state');
+  //   btn.classList.remove('hidden-state');
 
-    dragAndDrop();
-  });
+  //   dragAndDrop();
+  // });
 }
 
 let draggedItem = null;
