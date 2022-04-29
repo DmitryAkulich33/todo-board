@@ -14,6 +14,7 @@
           <div class="header-logo">
             <img src="./img/trelloLogo.png" alt="#" />
           </div>
+          <h1 class="hidden-state">Akulich Dzmitry</h1>
           <div class="header-time">
             <span class="time">12:12</span>
           </div>
@@ -29,7 +30,25 @@
               <span class="todo-count">2</span>
             </div>
             <div class="list">
-              <div class="list__item" draggable="true">Стартовая карточка</div>
+              <div class="list__item" draggable="true">
+                <div class="list__item-title">
+                  <span>Lorem ipsum dolor sit.</span>
+                </div>
+                <div class="list__item-description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                  aspernatur aperiam ratione magnam accusamus voluptates eius
+                  aliquam porro cum necessitatibus. Praesentium odio corrupti
+                  nihil fuga.
+                </div>
+                <div class="list__item-info">
+                  <span class="user-info">User 1</span>
+                  <span class="time-info">29.04.2022</span>
+                </div>
+                <div class="list__item-actions">
+                  <button class="list__item-edit">Edit todo</button>
+                  <button class="list__item-delete">Delete</button>
+                </div>
+              </div>
             </div>
             <!-- переделать на форму без дива -->
             <div class="form hidden-state">
@@ -44,7 +63,7 @@
             </div>
             <div class="add__btn">
               <span>+</span>
-              Add card
+              Add todo
             </div>
           </div>
           <div class="boards__item">

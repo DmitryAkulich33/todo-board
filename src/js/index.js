@@ -50,10 +50,11 @@ function addTask() {
   });
 }
 
+let draggedItem = null;
+
 function dragAndDrop() {
   const listItems = document.querySelectorAll('.list__item');
   const lists = document.querySelectorAll('.list');
-  let draggedItem = null;
 
   for (let i = 0; i < listItems.length; i++) {
     const item = listItems[i];

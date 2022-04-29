@@ -18,7 +18,7 @@
         transition: 0.3s all ease;
         border-radius: 5px;
         margin: 0 15px;
-        .boards__item-name {
+        &-name {
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -32,11 +32,13 @@
           }
         }
         .list {
-          min-height: 40px;
+          min-height: 20vh;
+          max-height: 75vh;
+          overflow-y: auto;
           &__item {
             background-color: #fefefe;
             border-radius: 5px;
-            padding: 10px;
+            padding: 7px;
             text-align: center;
             margin: 4px 0;
             cursor: pointer;
@@ -44,6 +46,46 @@
             font-size: 14px;
             outline: none;
             border: none;
+            // height: 190px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            &-title {
+              margin-bottom: 7px;
+              font-weight: bold;
+              text-align: left;
+              font-size: 18px;
+            }
+            &-description {
+              text-align: left;
+              margin-bottom: 7px;
+              height: 80px;
+              overflow-y: auto;
+            }
+            &-info {
+              display: flex;
+              justify-content: space-between;
+              font-size: 12px;
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
+            &-actions {
+              display: flex;
+              justify-content: end;
+              .list__item-edit {
+                cursor: pointer;
+                border-radius: 5px;
+                border: 1px solid #8f7d7d66;
+                padding: 2px 5px;
+              }
+              .list__item-delete {
+                margin-left: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                padding: 2px 5px;
+                border: 1px solid #8f7d7d66;
+              }
+            }
           }
         }
         .form {
