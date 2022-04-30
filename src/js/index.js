@@ -1,55 +1,74 @@
+import createElement from './createElement.js';
 // сделать локально
 const lists = document.querySelectorAll('.list');
 
-function addTask() {
+function addEventListeners() {
   const btn = document.querySelector('.add__btn');
-  // const addBtn = document.querySelector('.add__item-btn');
-  // const cancelBtn = document.querySelector('.cancel__item-btn');
-  // const textarea = document.querySelector('.textarea');
-  // const form = document.querySelector('.form');
-  const addPopup = document.querySelector('.todo-popup');
-
-  // let value;
+  const popup = document.querySelector('.todo-popup');
+  const popupCancelBtn = document.querySelector('.cancel-btn');
+  const popupConfirmBtn = document.querySelector('.confirm-btn');
+  const popupTextarea = document.querySelector('.todo-item-description');
+  const popupInputTitle = document.querySelector('.todo-item-title');
+  const popupUserSelector = document.querySelector('.user-selector');
 
   btn.addEventListener('click', () => {
-    addPopup.classList.remove('hidden-state');
-    // form.classList.remove('hidden-state');
-    // btn.classList.add('hidden-state');
-    // addBtn.classList.add('hidden-state');
-
-    // textarea.addEventListener('input', (event) => {
-    //   let value = event.target.value;
-
-    //   if (value) {
-    //     addBtn.classList.remove('hidden-state');
-    //   } else {
-    //     addBtn.classList.add('hidden-state');
-    //   }
-    // });
+    popup.classList.remove('hidden-state');
   });
 
-  // cancelBtn.addEventListener('click', () => {
-  //   // value = '';
-  //   // создать отдельную функциюю clear
-  //   textarea.value = '';
-  //   form.classList.add('hidden-state');
-  //   btn.classList.remove('hidden-state');
-  // });
+  popupCancelBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    // в отдельную функцию clearForm
+    popup.classList.add('hidden-state');
+    popupTextarea.value = '';
+    popupInputTitle.value = '';
+    popupUserSelector.options[popupUserSelector.selectedIndex].selected = false;
+  });
 
-  // addBtn.addEventListener('click', () => {
-  //   const newItem = document.createElement('div');
-  //   newItem.classList.add('list__item');
-  //   newItem.draggable = true;
-  //   newItem.textContent = textarea.value;
-  //   lists[0].append(newItem);
+  popupConfirmBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    const newItem = createElement('div', 'list__item');
+    newItem.draggable = true;
 
-  //   // создать отдельную функциюю clear
-  //   textarea.value = '';
-  //   form.classList.add('hidden-state');
-  //   btn.classList.remove('hidden-state');
+    const newItemTitle = createElement('div', 'list__item-title');
+    const spanTitle = createElement('span');
+    spanTitle.innerHTML = popupInputTitle.value;
+    newItemTitle.append(spanTitle);
 
-  //   dragAndDrop();
-  // });
+    const newItemDescription = createElement('div', 'list__item-description');
+    const pDescription = createElement('p');
+    pDescription.innerHTML = popupTextarea.value;
+    newItemDescription.append(pDescription);
+
+    const newItemInfo = createElement('div', 'list__item-info');
+    const userInfo = createElement('span', 'user-info');
+    userInfo.innerHTML =
+      popupUserSelector.options[popupUserSelector.selectedIndex].text;
+    const timeInfo = createElement('span', 'time-info');
+    timeInfo.innerHTML = new Date().toLocaleDateString();
+    newItemInfo.append(userInfo, timeInfo);
+
+    const newItemActions = createElement('div', 'list__item-actions');
+    const editBtn = createElement('button', 'list__item-edit');
+    editBtn.innerHTML = 'Edit todo';
+    const deleteBtn = createElement('button', 'list__item-delete');
+    deleteBtn.innerHTML = 'Delete';
+    newItemActions.append(editBtn, deleteBtn);
+
+    newItem.append(
+      newItemTitle,
+      newItemDescription,
+      newItemInfo,
+      newItemActions
+    );
+    lists[0].append(newItem);
+    dragAndDrop();
+
+    //в отдельную функцию clearForm
+    popup.classList.add('hidden-state');
+    popupTextarea.value = '';
+    popupInputTitle.value = '';
+    popupUserSelector.options[popupUserSelector.selectedIndex].selected = false;
+  });
 }
 
 let draggedItem = null;
@@ -100,5 +119,5 @@ function dragAndDrop() {
   }
 }
 
-addTask();
+addEventListeners();
 dragAndDrop();

@@ -35,10 +35,10 @@
                   <span>Lorem ipsum dolor sit.</span>
                 </div>
                 <div class="list__item-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-                  aspernatur aperiam ratione magnam accusamus voluptates eius
-                  aliquam porro cum necessitatibus. Praesentium odio corrupti
-                  nihil fuga.
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    aspernatur aperiam ratione magnam accusamus voluptates
+                  </p>
                 </div>
                 <div class="list__item-info">
                   <span class="user-info">User 1</span>
@@ -50,24 +50,10 @@
                 </div>
               </div>
             </div>
-            <!-- удалить походу или переделать на форму без дива -->
-            <div class="form hidden-state">
-              <textarea
-                class="textarea"
-                placeholder="Enter name of this card"
-              ></textarea>
-              <div class="buttons">
-                <button class="add__item-btn">Add card</button>
-                <button class="cancel__item-btn">Cancel</button>
-              </div>
-            </div>
-            <!-- end -->
-            <!-- переделать на модалку -->
             <div class="add__btn">
               <span>+</span>
               Add todo
             </div>
-            <!-- end -->
           </div>
           <div class="boards__item">
             <div class="boards__item-name">
@@ -90,7 +76,6 @@
     <div class="todo-popup hidden-state">
       <div class="todo-popup__body">
         <div class="todo-popup__content">
-          <a href="" class="todo-popup__close">x</a>
           <div class="todo-popup__title">
             <form class="todo-popup-form-add" action="#" method="post">
               <input
@@ -103,6 +88,13 @@
                 placeholder="Enter todo description ..."
               ></textarea>
               <div class="todo-popup-form-actions">
+                <select name="user-selector" class="user-selector">
+                  <option value="default" hidden="true" selected="selected">
+                    Select user
+                  </option>
+                  <option value="test-user-1">Test User 1</option>
+                  <option value="test-user-2">Test User 2</option>
+                </select>
                 <div class="todo-popup-form-buttons">
                   <button class="cancel-btn">Cancel</button>
                   <button class="confirm-btn">Confirm</button>

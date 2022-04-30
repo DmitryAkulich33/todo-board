@@ -46,7 +46,6 @@
             font-size: 14px;
             outline: none;
             border: none;
-            // height: 190px;
             display: flex;
             justify-content: space-between;
             flex-direction: column;
@@ -59,7 +58,7 @@
             &-description {
               text-align: left;
               margin-bottom: 7px;
-              height: 80px;
+              height: 60px;
               overflow-y: auto;
             }
             &-info {
@@ -85,53 +84,6 @@
                 padding: 2px 5px;
                 border: 1px solid #8f7d7d66;
               }
-            }
-          }
-        }
-        .form {
-          border-radius: 5px;
-          margin-top: auto;
-          .textarea {
-            resize: none;
-            height: 60px;
-            border-radius: 5px;
-            border: none;
-            background: white;
-            padding: 10px;
-            width: 100%;
-            &:focus {
-              outline: none;
-            }
-          }
-          .buttons {
-            display: flex;
-            .add__item-btn {
-              background: rgb(13, 136, 218);
-              border: none;
-              height: 35px;
-              cursor: pointer;
-              color: white;
-              border-radius: 5px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 100%;
-              margin-right: 10px;
-            }
-            .cancel__item-btn {
-              padding: 0 10px;
-              background: rgb(160, 17, 12);
-              border: none;
-              height: 35px;
-              cursor: pointer;
-              color: white;
-              border-radius: 5px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 75px;
-              margin-left: auto;
-              flex-shrink: 0;
             }
           }
         }
