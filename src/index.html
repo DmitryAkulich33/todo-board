@@ -15,8 +15,8 @@
             <img src="./img/trelloLogo.png" alt="#" />
           </div>
           <h1 class="hidden-state">Akulich Dzmitry</h1>
-          <div class="header-time">
-            <span class="time">12:12</span>
+          <div class="header-clock">
+            <span class="clock"></span>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
           <div class="boards-item">
             <div class="boards-item-name">
               <span class="title">Todo:</span>
-              <span class="todo-count">2</span>
+              <span class="todo-count" id="new-todo-count"></span>
             </div>
             <div class="list"></div>
             <div class="add-btn">
@@ -38,16 +38,20 @@
           <div class="boards-item">
             <div class="boards-item-name">
               <span class="title">In progress:</span>
-              <span class="todo-count">0</span>
+              <span class="todo-count" id="in-progress-todo-count"></span>
             </div>
             <div class="list"></div>
           </div>
           <div class="boards-item">
             <div class="boards-item-name">
               <span class="title">Completed:</span>
-              <span class="todo-count">0</span>
+              <span class="todo-count" id="completed-todo-count"></span>
             </div>
             <div class="list"></div>
+            <div class="delete-all-btn">
+              <span>+</span>
+              Delete all
+            </div>
           </div>
         </div>
       </div>

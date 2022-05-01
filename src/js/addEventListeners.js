@@ -2,12 +2,18 @@ import { todos, users, setTodosInStorage } from './customStorage.js';
 import { createTodoPopup, removeTodoPopup } from './createPopupTodoItem.js';
 import createTodoItem from './createTodoItem.js';
 import Todo from './todoConstructor.js';
+import {
+  createDeleteAllPopup,
+  removeDeleteAllPopup,
+} from './createPopupDeleteAll.js';
+import updateTodoCounts from './updateTodoCounts.js';
 
 function addEventListeners() {
-  const btn = document.querySelector('.add-btn');
+  const addBtn = document.querySelector('.add-btn');
   const lists = document.querySelectorAll('.list');
+  const deleteAll = document.querySelector('.delete-all-btn');
 
-  btn.addEventListener('click', () => {
+  addBtn.addEventListener('click', () => {
     createTodoPopup(users);
     const popupCancelBtn = document.querySelector('.cancel-btn');
     const popupConfirmBtn = document.querySelector('.confirm-btn');
@@ -29,6 +35,31 @@ function addEventListeners() {
       setTodosInStorage();
       dragAndDrop();
       removeTodoPopup();
+      updateTodoCounts();
+    });
+  });
+
+  deleteAll.addEventListener('click', () => {
+    createDeleteAllPopup();
+    const cancelBtn = document.querySelector('.delete-all-popup-cancel-btn');
+    const confirmBtn = document.querySelector('.delete-all-popup-confirm-btn');
+
+    cancelBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      removeDeleteAllPopup();
+    });
+
+    confirmBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      lists[2].innerHTML = '';
+      todos.forEach((elem, index) => {
+        if (elem.state == 'completed') {
+          todos.splice(index, 1);
+        }
+      });
+      setTodosInStorage();
+      removeDeleteAllPopup();
+      updateTodoCounts();
     });
   });
 
@@ -43,6 +74,7 @@ function addEventListeners() {
         todos.splice(index, 1);
         item.remove();
         setTodosInStorage(todos);
+        updateTodoCounts();
       }
     })
   );
@@ -95,6 +127,7 @@ function dragAndDrop() {
 
         setTodosInStorage(todos);
         this.append(draggedItem);
+        updateTodoCounts();
       });
     }
   }

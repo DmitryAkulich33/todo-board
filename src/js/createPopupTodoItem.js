@@ -2,14 +2,14 @@ import createElement from './createElement.js';
 
 function createFormActionButtons() {
   const buttons = createElement('div', 'todo-popup-form-buttons');
-  const cancelBtn = createElement('div', 'cancel-btn');
-  const confirmlBtn = createElement('div', 'confirm-btn');
+  const cancelBtn = createElement('button', 'cancel-btn');
+  const confirmBtn = createElement('button', 'confirm-btn');
 
   cancelBtn.type = 'button';
   cancelBtn.innerHTML = 'Cancel';
-  confirmlBtn.type = 'button';
-  confirmlBtn.innerHTML = 'Confirm';
-  buttons.append(cancelBtn, confirmlBtn);
+  confirmBtn.type = 'button';
+  confirmBtn.innerHTML = 'Confirm';
+  buttons.append(cancelBtn, confirmBtn);
 
   return buttons;
 }
