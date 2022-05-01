@@ -7,7 +7,7 @@
       align-items: center;
       flex-wrap: wrap;
       width: 100%;
-      &__item {
+      &-item {
         display: flex;
         flex-direction: column;
         align-self: baseline;
@@ -32,10 +32,10 @@
           }
         }
         .list {
-          min-height: 20vh;
+          min-height: 17vh;
           max-height: 75vh;
           overflow-y: auto;
-          &__item {
+          &-item {
             background-color: #fefefe;
             border-radius: 5px;
             padding: 7px;
@@ -71,13 +71,13 @@
             &-actions {
               display: flex;
               justify-content: end;
-              .list__item-edit {
+              .list-item-edit {
                 cursor: pointer;
                 border-radius: 5px;
                 border: 1px solid #8f7d7d66;
                 padding: 2px 5px;
               }
-              .list__item-delete {
+              .list-item-delete {
                 margin-left: 10px;
                 cursor: pointer;
                 border-radius: 5px;
@@ -87,7 +87,7 @@
             }
           }
         }
-        .add__btn {
+        .add-btn {
           height: 30px;
           background: rgba(155, 155, 155, 0.3);
           border-radius: 5px;
@@ -113,6 +113,6 @@
   display: none !important;
 }
 
-.shadow-item {
-  background-color: rgba(0, 0, 0, 0.3);
-}
+// .shadow-item {
+//   background-color: rgba(0, 0, 0, 0.3);
+// }

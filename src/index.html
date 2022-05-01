@@ -24,46 +24,46 @@
     <section class="todo-boards">
       <div class="container">
         <div class="boards">
-          <div class="boards__item">
-            <div class="boards__item-name">
+          <div class="boards-item">
+            <div class="boards-item-name">
               <span class="title">Todo:</span>
               <span class="todo-count">2</span>
             </div>
             <div class="list">
-              <div class="list__item" draggable="true">
-                <div class="list__item-title">
+              <!-- <div class="list-item" draggable="true">
+                <div class="list-item-title">
                   <span>Lorem ipsum dolor sit.</span>
                 </div>
-                <div class="list__item-description">
+                <div class="list-item-description">
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
                     aspernatur aperiam ratione magnam accusamus voluptates
                   </p>
                 </div>
-                <div class="list__item-info">
+                <div class="list-item-info">
                   <span class="user-info">User 1</span>
                   <span class="time-info">29.04.2022</span>
                 </div>
-                <div class="list__item-actions">
-                  <button class="list__item-edit">Edit todo</button>
-                  <button class="list__item-delete">Delete</button>
+                <div class="list-item-actions">
+                  <button class="list-item-edit">Edit todo</button>
+                  <button class="list-item-delete">Delete</button>
                 </div>
-              </div>
+              </div> -->
             </div>
-            <div class="add__btn">
+            <div class="add-btn">
               <span>+</span>
               Add todo
             </div>
           </div>
-          <div class="boards__item">
-            <div class="boards__item-name">
+          <div class="boards-item">
+            <div class="boards-item-name">
               <span class="title">In progress:</span>
               <span class="todo-count">0</span>
             </div>
             <div class="list"></div>
           </div>
-          <div class="boards__item">
-            <div class="boards__item-name">
+          <div class="boards-item">
+            <div class="boards-item-name">
               <span class="title">Completed:</span>
               <span class="todo-count">0</span>
             </div>
@@ -73,38 +73,36 @@
       </div>
     </section>
 
-    <div class="todo-popup hidden-state">
-      <div class="todo-popup__body">
-        <div class="todo-popup__content">
-          <div class="todo-popup__title">
-            <form class="todo-popup-form-add" action="#" method="post">
-              <input
-                type="text"
-                class="todo-item-title"
-                placeholder="Enter todo title ..."
-              />
-              <textarea
-                class="todo-item-description"
-                placeholder="Enter todo description ..."
-              ></textarea>
-              <div class="todo-popup-form-actions">
-                <select name="user-selector" class="user-selector">
-                  <option value="default" hidden="true" selected="selected">
-                    Select user
-                  </option>
-                  <option value="test-user-1">Test User 1</option>
-                  <option value="test-user-2">Test User 2</option>
-                </select>
-                <div class="todo-popup-form-buttons">
-                  <button class="cancel-btn">Cancel</button>
-                  <button class="confirm-btn">Confirm</button>
-                </div>
+    <!-- <div class="todo-popup hidden-state">
+      <div class="todo-popup-body">
+        <div class="todo-popup-content">
+          <form class="todo-popup-form-add">
+            <input
+              type="text"
+              class="todo-item-title"
+              placeholder="Enter todo title ..."
+            />
+            <textarea
+              class="todo-item-description"
+              placeholder="Enter todo description ..."
+            ></textarea>
+            <div class="todo-popup-form-actions">
+              <select name="user-selector" class="user-selector">
+                <option value="default" hidden="true" selected="selected">
+                  Select user
+                </option>
+                <option value="test-user-1">Test User 1</option>
+                <option value="test-user-2">Test User 2</option>
+              </select>
+              <div class="todo-popup-form-buttons">
+                <button type="button" class="cancel-btn">Cancel</button>
+                <button type="button" class="confirm-btn">Confirm</button>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <script type="module" src="./js/index.js"></script>
   </body>
