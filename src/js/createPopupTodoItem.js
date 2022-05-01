@@ -19,7 +19,7 @@ function createUserOptions(users) {
   users.forEach((elem) => {
     const option = createElement('option');
     option.value = elem.id;
-    option.innerHTML = `${elem.name} ${elem.surname}`;
+    option.innerHTML = `${elem.name}`;
     userOptions.push(option);
   });
 

@@ -1,15 +1,4 @@
-const defaultUsers = [
-  {
-    id: 1,
-    name: 'Ivan',
-    surname: 'Ivanov',
-  },
-  {
-    id: 2,
-    name: 'Petr',
-    surname: 'Petrov',
-  },
-];
+import generateUsers from './generateUsers.js';
 
 const defaultTodos = [
   {
@@ -62,8 +51,9 @@ const defaultTodos = [
   },
 ];
 
+generateUsers();
 const todos = getTodosFromStorage() || defaultTodos;
-const users = getUsersFromStorage() || defaultUsers;
+const users = getUsersFromStorage() || [];
 
 function setTodosInStorage() {
   window.localStorage.setItem('todos', JSON.stringify(todos));
@@ -73,12 +63,12 @@ function getTodosFromStorage() {
   return JSON.parse(window.localStorage.getItem('todos'));
 }
 
-function setUsersInStorage() {
-  window.localStorage.setItem('users', JSON.stringify(todos));
+function setUsersInStorage(users) {
+  window.localStorage.setItem('users', JSON.stringify(users));
 }
 
 function getUsersFromStorage() {
   return JSON.parse(window.localStorage.getItem('users'));
 }
 
-export { todos, users, setTodosInStorage };
+export { todos, users, setTodosInStorage, setUsersInStorage };
