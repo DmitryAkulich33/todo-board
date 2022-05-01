@@ -43,6 +43,7 @@ function createnewItemActions() {
 function createTodoItem(item, user) {
   const newItem = createElement('div', 'list-item');
   newItem.draggable = true;
+  newItem.id = `list-item_${item.id}`;
 
   const newItemTitle = createNewItemTitle(item);
   const newItemDescription = createNewItemDescription(item);

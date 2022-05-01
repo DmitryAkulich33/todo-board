@@ -1,4 +1,4 @@
-const users = [
+const defaultUsers = [
   {
     id: 1,
     name: 'Ivan',
@@ -63,6 +63,7 @@ const defaultTodos = [
 ];
 
 const todos = getTodosFromStorage() || defaultTodos;
+const users = getUsersFromStorage() || defaultUsers;
 
 function setTodosInStorage() {
   window.localStorage.setItem('todos', JSON.stringify(todos));
@@ -72,4 +73,12 @@ function getTodosFromStorage() {
   return JSON.parse(window.localStorage.getItem('todos'));
 }
 
-export { todos, users, setTodosInStorage, getTodosFromStorage };
+function setUsersInStorage() {
+  window.localStorage.setItem('users', JSON.stringify(todos));
+}
+
+function getUsersFromStorage() {
+  return JSON.parse(window.localStorage.getItem('users'));
+}
+
+export { todos, users, setTodosInStorage };
