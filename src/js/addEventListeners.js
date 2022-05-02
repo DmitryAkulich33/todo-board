@@ -51,7 +51,10 @@ function addEventListeners() {
 
     confirmBtn.addEventListener('click', (event) => {
       event.preventDefault();
-      lists[2].innerHTML = '';
+      const completedBoard = document.querySelector('#boards-item-completed');
+      const completedList = completedBoard.querySelector('.list');
+      completedList.innerHTML = '';
+
       todos.forEach((elem, index) => {
         if (elem.state == 'completed') {
           todos.splice(index, 1);
@@ -89,7 +92,6 @@ function addEventListeners() {
 
         popupConfirmBtn.addEventListener('click', (event) => {
           event.preventDefault();
-
           updateTodoArray(todos[index]);
           updateTodoElement(item, todos[index]);
           setTodosInStorage();
