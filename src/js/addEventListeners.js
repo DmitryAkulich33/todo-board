@@ -76,12 +76,31 @@ function addEventListeners() {
         setTodosInStorage(todos);
         updateTodoCounts();
       }
+
+      if (targetClasslist.contains('list-item-edit')) {
+        createTodoPopup(users, todos[index]);
+        const popupCancelBtn = document.querySelector('.cancel-btn');
+        const popupConfirmBtn = document.querySelector('.confirm-btn');
+
+        popupCancelBtn.addEventListener('click', (event) => {
+          event.preventDefault();
+          removeTodoPopup();
+        });
+
+        popupConfirmBtn.addEventListener('click', (event) => {
+          event.preventDefault();
+
+          updateTodoArray(todos[index]);
+          updateTodoElement(item, todos[index]);
+          setTodosInStorage();
+          removeTodoPopup();
+        });
+      }
     })
   );
 }
 
 let draggedItem = null;
-
 function dragAndDrop() {
   const listItems = document.querySelectorAll('.list-item');
   const lists = document.querySelectorAll('.list');
@@ -146,6 +165,28 @@ function createNewTodo() {
   );
 
   return new Todo(id, title, description, userId);
+}
+
+function updateTodoArray(elem) {
+  const title = document.querySelector('.todo-item-title');
+  const description = document.querySelector('.todo-item-description');
+  const popupSelector = document.querySelector('.user-selector');
+
+  elem.title = title.value;
+  elem.description = description.value;
+  elem.userId = Number(
+    popupSelector.options[popupSelector.selectedIndex].value
+  );
+}
+
+function updateTodoElement(item, elem) {
+  const title = item.querySelector('.list-item-title');
+  const description = item.querySelector('.list-item-description');
+  const userInfo = item.querySelector('.user-info');
+
+  title.innerHTML = elem.title;
+  description.innerHTML = elem.description;
+  userInfo.innerHTML = users.find((item) => item.id == elem.userId).name;
 }
 
 function parseItemId(id) {

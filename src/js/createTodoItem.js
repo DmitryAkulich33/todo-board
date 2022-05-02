@@ -21,6 +21,7 @@ function createNewItemDescription(item) {
 function createNewItemInfo(item, user) {
   const newItemInfo = createElement('div', 'list-item-info');
   const userInfo = createElement('span', 'user-info');
+  userInfo.id = `user-info_${user.id}`;
   userInfo.innerHTML = `${user.name}`;
   const timeInfo = createElement('span', 'time-info');
   timeInfo.innerHTML = item.date;

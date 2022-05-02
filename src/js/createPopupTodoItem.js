@@ -14,12 +14,15 @@ function createFormActionButtons() {
   return buttons;
 }
 
-function createUserOptions(users) {
+function createUserOptions(users, item) {
   const userOptions = [];
   users.forEach((elem) => {
     const option = createElement('option');
     option.value = elem.id;
     option.innerHTML = `${elem.name}`;
+    if (item && item.userId == elem.id) {
+      option.selected = 'true';
+    }
     userOptions.push(option);
   });
 
@@ -30,16 +33,16 @@ function createDefaultUserOption() {
   const defaultOption = createElement('option');
   defaultOption.value = 'default';
   defaultOption.hidden = true;
-  defaultOption.select = 'selected';
+  defaultOption.selected = 'true';
   defaultOption.innerHTML = 'Select user';
 
   return defaultOption;
 }
 
-function createFormActionsSelect(users) {
+function createFormActionsSelect(users, item) {
   const select = createElement('select', 'user-selector');
   const defaultOption = createDefaultUserOption();
-  const userOptions = createUserOptions(users);
+  const userOptions = createUserOptions(users, item);
 
   select.name = 'user-selector';
   select.append(defaultOption, ...userOptions);
@@ -47,47 +50,49 @@ function createFormActionsSelect(users) {
   return select;
 }
 
-function createTodoPopupFormActions(users) {
+function createTodoPopupFormActions(users, item) {
   const formActions = createElement('div', 'todo-popup-form-actions');
-  const select = createFormActionsSelect(users);
+  const select = createFormActionsSelect(users, item);
   const buttons = createFormActionButtons();
 
   formActions.append(select, buttons);
   return formActions;
 }
 
-function createTodoPopupFormTextarea() {
+function createTodoPopupFormTextarea(item) {
   const textarea = createElement('textarea', 'todo-item-description');
   textarea.placeholder = 'Enter todo description ...';
+  textarea.value = item ? item.description : '';
 
   return textarea;
 }
 
-function createTodoPopupFormInput() {
+function createTodoPopupFormInput(item) {
   const input = createElement('input', 'todo-item-title');
   input.type = 'text';
   input.placeholder = 'Enter todo title ...';
+  input.value = item ? item.title : '';
 
   return input;
 }
 
-function createTodoPopupForm(users) {
+function createTodoPopupForm(users, item) {
   const form = createElement('form', 'todo-popup-form-add');
-  const input = createTodoPopupFormInput();
-  const textarea = createTodoPopupFormTextarea();
-  const formActions = createTodoPopupFormActions(users);
+  const input = createTodoPopupFormInput(item);
+  const textarea = createTodoPopupFormTextarea(item);
+  const formActions = createTodoPopupFormActions(users, item);
 
   form.append(input, textarea, formActions);
 
   return form;
 }
 
-function createTodoPopup(users) {
+function createTodoPopup(users, item) {
   const body = document.querySelector('body');
   const todoPopup = createElement('div', 'todo-popup');
   const todoPopupBody = createElement('div', 'todo-popup-body');
   const todoPopupContent = createElement('div', 'todo-popup-content');
-  const todoPopupForm = createTodoPopupForm(users);
+  const todoPopupForm = createTodoPopupForm(users, item);
 
   todoPopupContent.append(todoPopupForm);
   todoPopupBody.append(todoPopupContent);
