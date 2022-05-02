@@ -1,14 +1,18 @@
 import createBoards from './createBoards.js';
 import { addEventListeners, dragAndDrop } from './addEventListeners.js';
 import startClock from './startClock.js';
-import updateTodoCounts from './updateTodoCounts.js';
+import calculateTodoCounts from './calculateTodoCounts.js';
+import getUsersFromApi from './generateUsers.js';
+import { initUsers } from './customStorage.js';
 
 function initApp() {
   startClock();
   createBoards();
-  updateTodoCounts();
+  calculateTodoCounts();
   addEventListeners();
   dragAndDrop();
 }
 
-initApp();
+getUsersFromApi()
+  .then((data) => initUsers(data))
+  .then(() => initApp());

@@ -1,5 +1,3 @@
-import generateUsers from './generateUsers.js';
-
 const defaultTodos = [
   {
     id: 1,
@@ -51,9 +49,8 @@ const defaultTodos = [
   },
 ];
 
-generateUsers();
 const todos = getTodosFromStorage() || defaultTodos;
-const users = getUsersFromStorage() || [];
+let users = [];
 
 function setTodosInStorage() {
   window.localStorage.setItem('todos', JSON.stringify(todos));
@@ -71,4 +68,9 @@ function getUsersFromStorage() {
   return JSON.parse(window.localStorage.getItem('users'));
 }
 
-export { todos, users, setTodosInStorage, setUsersInStorage };
+function initUsers(usersFromApi) {
+  setUsersInStorage(usersFromApi);
+  users = getUsersFromStorage();
+}
+
+export { todos, users, setTodosInStorage, setUsersInStorage, initUsers };

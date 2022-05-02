@@ -1,4 +1,4 @@
-function updateTodoCounts() {
+function calculateTodoCounts() {
   const lists = document.querySelectorAll('.list');
   const newCount = document.querySelector('#new-todo-count');
   const inProgressCount = document.querySelector('#in-progress-todo-count');
@@ -9,4 +9,4 @@ function updateTodoCounts() {
   completedCount.innerHTML = lists[2].childElementCount;
 }
 
-export default updateTodoCounts;
+export default calculateTodoCounts;

@@ -1,9 +1,7 @@
-import { setUsersInStorage } from './customStorage.js';
-
-function generateUsers() {
-  fetch('https://jsonplaceholder.typicode.com/users')
-    .then((response) => response.json())
-    .then((data) => setUsersInStorage(data));
+function getUsersFromApi() {
+  return fetch('https://jsonplaceholder.typicode.com/users').then((response) =>
+    response.json()
+  );
 }
 
-export default generateUsers;
+export default getUsersFromApi;

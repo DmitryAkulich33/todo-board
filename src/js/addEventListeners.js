@@ -6,7 +6,7 @@ import {
   createDeleteAllPopup,
   removeDeleteAllPopup,
 } from './createPopupDeleteAll.js';
-import updateTodoCounts from './updateTodoCounts.js';
+import calculateTodoCounts from './calculateTodoCounts.js';
 
 function addEventListeners() {
   const addBtn = document.querySelector('.add-btn');
@@ -35,7 +35,7 @@ function addEventListeners() {
       setTodosInStorage();
       dragAndDrop();
       removeTodoPopup();
-      updateTodoCounts();
+      calculateTodoCounts();
     });
   });
 
@@ -62,7 +62,7 @@ function addEventListeners() {
       });
       setTodosInStorage();
       removeDeleteAllPopup();
-      updateTodoCounts();
+      calculateTodoCounts();
     });
   });
 
@@ -77,7 +77,7 @@ function addEventListeners() {
         todos.splice(index, 1);
         item.remove();
         setTodosInStorage(todos);
-        updateTodoCounts();
+        calculateTodoCounts();
       }
 
       if (targetClasslist.contains('list-item-edit')) {
@@ -148,7 +148,7 @@ function dragAndDrop() {
 
         setTodosInStorage(todos);
         this.append(draggedItem);
-        updateTodoCounts();
+        calculateTodoCounts();
       });
     }
   }
