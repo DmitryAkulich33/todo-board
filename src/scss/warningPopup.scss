@@ -1,4 +1,4 @@
-.delete-all-popup {
+.warning-popup {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
     padding: 30px 10px;
-    .delete-all-popup-content {
+    .warning-popup-content {
       background-color: white;
       color: black;
       max-width: 20vw;
@@ -21,21 +21,21 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      .delete-all-popup-text {
+      .warning-popup-text {
         font-size: 20px;
       }
-      .delete-all-popup-form {
+      .warning-popup-form {
         width: 100%;
         margin-top: 25px;
         display: flex;
         justify-content: space-around;
-        .delete-all-popup-cancel-btn {
+        .warning-popup-cancel-btn {
           cursor: pointer;
           border-radius: 5px;
           border: 1px solid #8f7d7d66;
           padding: 2px 5px;
         }
-        .delete-all-popup-confirm-btn {
+        .warning-popup-confirm-btn {
           cursor: pointer;
           border-radius: 5px;
           border: 1px solid #8f7d7d66;

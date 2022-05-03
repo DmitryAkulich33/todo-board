@@ -3,9 +3,9 @@ import { createTodoPopup, removeTodoPopup } from './createPopupTodoItem.js';
 import createTodoItem from './createTodoItem.js';
 import Todo from './todoConstructor.js';
 import {
-  createDeleteAllPopup,
-  removeDeleteAllPopup,
-} from './createPopupDeleteAll.js';
+  createWarningPopup,
+  removeWarningPopup,
+} from './createWarningPopup.js';
 import calculateTodoCounts from './calculateTodoCounts.js';
 import checkPopupFields from './checkPopupFields.js';
 
@@ -42,13 +42,13 @@ function addEventListeners() {
   });
 
   deleteAll.addEventListener('click', () => {
-    createDeleteAllPopup();
-    const cancelBtn = document.querySelector('.delete-all-popup-cancel-btn');
-    const confirmBtn = document.querySelector('.delete-all-popup-confirm-btn');
+    createWarningPopup('Do you really want to delete all items?', true);
+    const cancelBtn = document.querySelector('.warning-popup-cancel-btn');
+    const confirmBtn = document.querySelector('.warning-popup-confirm-btn');
 
     cancelBtn.addEventListener('click', (event) => {
       event.preventDefault();
-      removeDeleteAllPopup();
+      removeWarningPopup();
     });
 
     confirmBtn.addEventListener('click', (event) => {
@@ -63,7 +63,7 @@ function addEventListeners() {
         }
       });
       setTodosInStorage();
-      removeDeleteAllPopup();
+      removeWarningPopup();
       calculateTodoCounts();
     });
   });
@@ -134,6 +134,23 @@ function dragAndDrop() {
       list.addEventListener('dragover', (event) => event.preventDefault());
 
       list.addEventListener('drop', function () {
+        // if (
+        //   list.childElementCount >= 6 &&
+        //   list.closest('#boards-item-in-progress')
+        // ) {
+        //   if (document.querySelector('.warning-popup')) return;
+        //   createWarningPopup('Items > 6', false);
+        //   const confirmBtn = document.querySelector(
+        //     '.warning-popup-confirm-btn'
+        //   );
+
+        //   confirmBtn.addEventListener('click', (event) => {
+        //     event.preventDefault();
+        //     item.classList.remove('hidden-state');
+        //     removeWarningPopup();
+        //   });
+        //   return;
+        // }
         let state = '';
         switch (j) {
           case 0:
