@@ -7,6 +7,7 @@ import {
   removeDeleteAllPopup,
 } from './createPopupDeleteAll.js';
 import calculateTodoCounts from './calculateTodoCounts.js';
+import checkPopupFields from './checkPopupFields.js';
 
 function addEventListeners() {
   const addBtn = document.querySelector('.add-btn');
@@ -25,8 +26,9 @@ function addEventListeners() {
 
     popupConfirmBtn.addEventListener('click', (event) => {
       event.preventDefault();
-
       const newTodo = createNewTodo();
+      if (!newTodo) return;
+
       const user = users.find((elem) => elem.id == newTodo.userId);
       const createdTodo = createTodoItem(newTodo, user);
 
@@ -92,8 +94,10 @@ function addEventListeners() {
 
         popupConfirmBtn.addEventListener('click', (event) => {
           event.preventDefault();
-          updateTodoArray(todos[index]);
-          updateTodoElement(item, todos[index]);
+          const todo = todos[index];
+
+          if (!updateTodoArray(todo)) return;
+          updateTodoElement(item, todo);
           setTodosInStorage();
           removeTodoPopup();
         });
@@ -166,6 +170,8 @@ function createNewTodo() {
     popupSelector.options[popupSelector.selectedIndex].value
   );
 
+  if (!checkPopupFields(title, description, userId)) return;
+
   return new Todo(id, title, description, userId);
 }
 
@@ -174,11 +180,19 @@ function updateTodoArray(elem) {
   const description = document.querySelector('.todo-item-description');
   const popupSelector = document.querySelector('.user-selector');
 
-  elem.title = title.value;
-  elem.description = description.value;
-  elem.userId = Number(
+  const newTitle = title.value;
+  const newDescription = description.value;
+  const newUserId = Number(
     popupSelector.options[popupSelector.selectedIndex].value
   );
+
+  if (!checkPopupFields(newTitle, newDescription, newUserId)) return;
+
+  elem.title = newTitle;
+  elem.description = newDescription;
+  elem.userId = newUserId;
+
+  return elem;
 }
 
 function updateTodoElement(item, elem) {
