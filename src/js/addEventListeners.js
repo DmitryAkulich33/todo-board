@@ -1,5 +1,5 @@
 import { todos, users, setTodosInStorage } from './customStorage.js';
-import { createTodoPopup, removeTodoPopup } from './createPopupTodoItem.js';
+import { createTodoPopup, removeTodoPopup } from './createTodoItemPopup.js';
 import createTodoItem from './createTodoItem.js';
 import Todo from './todoConstructor.js';
 import {
@@ -8,6 +8,8 @@ import {
 } from './createWarningPopup.js';
 import calculateTodoCounts from './calculateTodoCounts.js';
 import checkPopupFields from './checkPopupFields.js';
+import { addDragEventsForElement } from './addDragAndDropEvents.js';
+import { parseItemId } from './parser.js';
 
 function addEventListeners() {
   const addBtn = document.querySelector('.add-btn');
@@ -35,7 +37,7 @@ function addEventListeners() {
       todos.push(newTodo);
       lists[0].append(createdTodo);
       setTodosInStorage();
-      dragAndDrop();
+      addDragEventsForElement(createdTodo);
       removeTodoPopup();
       calculateTodoCounts();
     });
@@ -53,7 +55,7 @@ function addEventListeners() {
 
     confirmBtn.addEventListener('click', (event) => {
       event.preventDefault();
-      const completedBoard = document.querySelector('#boards-item-completed');
+      const completedBoard = document.querySelector('#boards-item_completed');
       const completedList = completedBoard.querySelector('.list');
       completedList.innerHTML = '';
 
@@ -106,75 +108,6 @@ function addEventListeners() {
   );
 }
 
-let draggedItem = null;
-function dragAndDrop() {
-  const listItems = document.querySelectorAll('.list-item');
-  const lists = document.querySelectorAll('.list');
-
-  for (let i = 0; i < listItems.length; i++) {
-    const item = listItems[i];
-
-    item.addEventListener('dragstart', () => {
-      draggedItem = item;
-      setTimeout(() => {
-        item.classList.add('hidden-state');
-      }, 0);
-    });
-
-    item.addEventListener('dragend', () => {
-      setTimeout(() => {
-        item.classList.remove('hidden-state');
-        draggedItem = null;
-      }, 0);
-    });
-
-    for (let j = 0; j < lists.length; j++) {
-      const list = lists[j];
-
-      list.addEventListener('dragover', (event) => event.preventDefault());
-
-      list.addEventListener('drop', function () {
-        // if (
-        //   list.childElementCount >= 6 &&
-        //   list.closest('#boards-item-in-progress')
-        // ) {
-        //   if (document.querySelector('.warning-popup')) return;
-        //   createWarningPopup('Items > 6', false);
-        //   const confirmBtn = document.querySelector(
-        //     '.warning-popup-confirm-btn'
-        //   );
-
-        //   confirmBtn.addEventListener('click', (event) => {
-        //     event.preventDefault();
-        //     item.classList.remove('hidden-state');
-        //     removeWarningPopup();
-        //   });
-        //   return;
-        // }
-        let state = '';
-        switch (j) {
-          case 0:
-            state = 'new';
-            break;
-          case 1:
-            state = 'in progress';
-            break;
-          case 2:
-            state = 'completed';
-            break;
-        }
-        const id = parseItemId(draggedItem.id);
-        const todoItem = todos.find((item) => item.id == id);
-        todoItem.state = state;
-
-        setTodosInStorage(todos);
-        this.append(draggedItem);
-        calculateTodoCounts();
-      });
-    }
-  }
-}
-
 function createNewTodo() {
   const popupTextarea = document.querySelector('.todo-item-description');
   const popupInputTitle = document.querySelector('.todo-item-title');
@@ -222,8 +155,4 @@ function updateTodoElement(item, elem) {
   userInfo.innerHTML = users.find((item) => item.id == elem.userId).name;
 }
 
-function parseItemId(id) {
-  return Number(id.split('_')[1]);
-}
-
-export { addEventListeners, dragAndDrop };
+export { addEventListeners };

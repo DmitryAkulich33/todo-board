@@ -6,18 +6,22 @@ function createBoards() {
   todos.forEach((elem) => {
     const user = users.find((user) => user.id === elem.userId);
     const newItem = createTodoItem(elem, user);
-    switch (elem.state) {
-      case 'new':
-        lists[0].append(newItem);
-        break;
-      case 'in progress':
-        lists[1].append(newItem);
-        break;
-      case 'completed':
-        lists[2].append(newItem);
-        break;
-    }
+    const boardIndex = getBoardIndex(elem.state);
+    lists[boardIndex].append(newItem);
   });
+}
+
+function getBoardIndex(state) {
+  switch (state) {
+    case 'new':
+      return 0;
+    case 'in progress':
+      return 1;
+    case 'completed':
+      return 2;
+    default:
+      return 0;
+  }
 }
 
 export default createBoards;
