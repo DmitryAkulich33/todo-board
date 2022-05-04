@@ -1,6 +1,10 @@
 import calculateTodoCounts from './calculateTodoCounts.js';
 import { todos, setTodosInStorage } from './customStorage.js';
 import { parseItemId, parseBoardId } from './parser.js';
+import {
+  createWarningPopup,
+  removeWarningPopup,
+} from './createWarningPopup.js';
 
 let draggedItem = null;
 
@@ -43,7 +47,22 @@ function dragOver(event) {
 }
 
 function dragDrop(event) {
-  let board = event.target.closest('.boards-item');
+  const board = event.target.closest('.boards-item');
+  const list = board.querySelector('.list');
+
+  if (list.childElementCount >= 6 && list.closest('#boards-item_in-progress')) {
+    if (document.querySelector('.warning-popup')) return;
+    createWarningPopup('Items > 6', false);
+    const confirmBtn = document.querySelector('.warning-popup-confirm-btn');
+
+    confirmBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.target.classList.remove('hidden-state');
+      removeWarningPopup();
+    });
+    return;
+  }
+
   let state = parseBoardId(board.id);
   const id = parseItemId(draggedItem.id);
   const todoItem = todos.find((item) => item.id == id);
