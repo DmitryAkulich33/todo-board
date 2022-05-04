@@ -1,5 +1,5 @@
 import { todos, users } from './customStorage.js';
-import createTodoItem from './createTodoItem.js';
+import { createTodoItem } from './createTodoItem.js';
 
 function createBoards() {
   const lists = document.querySelectorAll('.list');

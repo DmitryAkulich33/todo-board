@@ -5,6 +5,7 @@ import {
   createWarningPopup,
   removeWarningPopup,
 } from './createWarningPopup.js';
+import { createNewItemActions } from './createTodoItem.js';
 
 let draggedItem = null;
 
@@ -51,8 +52,10 @@ function dragDrop(event) {
   const list = board.querySelector('.list');
 
   if (list.childElementCount >= 6 && list.closest('#boards-item_in-progress')) {
-    if (document.querySelector('.warning-popup')) return;
-    createWarningPopup('Items > 6', false);
+    createWarningPopup(
+      '6 items is a maximum count of todo items in this boards',
+      false
+    );
     const confirmBtn = document.querySelector('.warning-popup-confirm-btn');
 
     confirmBtn.addEventListener('click', (event) => {
@@ -67,28 +70,18 @@ function dragDrop(event) {
   const id = parseItemId(draggedItem.id);
   const todoItem = todos.find((item) => item.id == id);
   todoItem.state = state;
-
+  updateTodoItemButtons(draggedItem, state);
   setTodosInStorage(todos);
   this.append(draggedItem);
   calculateTodoCounts();
 }
 
+function updateTodoItemButtons(item, boardState) {
+  const todoItemActions = item.querySelector('.list-item-actions');
+  todoItemActions.remove();
+
+  const newTodoItemActions = createNewItemActions(boardState);
+  item.append(newTodoItemActions);
+}
+
 export { addDragAndDropEvents, addDragEventsForElement };
-
-// if (
-//   list.childElementCount >= 6 &&
-//   list.closest('#boards-item-in-progress')
-// ) {
-//   if (document.querySelector('.warning-popup')) return;
-//   createWarningPopup('Items > 6', false);
-//   const confirmBtn = document.querySelector(
-//     '.warning-popup-confirm-btn'
-//   );
-
-//   confirmBtn.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     item.classList.remove('hidden-state');
-//     removeWarningPopup();
-//   });
-//   return;
-// }

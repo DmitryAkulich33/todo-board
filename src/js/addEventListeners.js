@@ -1,6 +1,6 @@
 import { todos, users, setTodosInStorage } from './customStorage.js';
 import { createTodoPopup, removeTodoPopup } from './createTodoItemPopup.js';
-import createTodoItem from './createTodoItem.js';
+import { createTodoItem } from './createTodoItem.js';
 import Todo from './todoConstructor.js';
 import {
   createWarningPopup,

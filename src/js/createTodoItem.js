@@ -30,13 +30,24 @@ function createNewItemInfo(item, user) {
   return newItemInfo;
 }
 
-function createnewItemActions() {
+function populateButtons(item, editBtn, deleteBtn, boardState) {
+  if (boardState == 'new') {
+    item.append(editBtn, deleteBtn);
+  }
+
+  if (boardState == 'completed') {
+    item.append(deleteBtn);
+  }
+}
+
+function createNewItemActions(boardState) {
   const newItemActions = createElement('div', 'list-item-actions');
   const editBtn = createElement('button', 'list-item-edit');
-  editBtn.innerHTML = 'Edit todo';
   const deleteBtn = createElement('button', 'list-item-delete');
+
+  editBtn.innerHTML = 'Edit todo';
   deleteBtn.innerHTML = 'Delete';
-  newItemActions.append(editBtn, deleteBtn);
+  populateButtons(newItemActions, editBtn, deleteBtn, boardState);
 
   return newItemActions;
 }
@@ -49,11 +60,11 @@ function createTodoItem(item, user) {
   const newItemTitle = createNewItemTitle(item);
   const newItemDescription = createNewItemDescription(item);
   const newItemInfo = createNewItemInfo(item, user);
-  const newItemActions = createnewItemActions();
+  const newItemActions = createNewItemActions(item.state);
 
   newItem.append(newItemTitle, newItemDescription, newItemInfo, newItemActions);
 
   return newItem;
 }
 
-export default createTodoItem;
+export { createTodoItem, createNewItemActions };
