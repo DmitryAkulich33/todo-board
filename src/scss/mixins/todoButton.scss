@@ -1,0 +1,10 @@
+@mixin todo_btn {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 2px 5px;
+  border: 1px solid $todo_items_btn_border;
+  font-weight: bold;
+  &:hover {
+    background: $bg_todo_items_btn_hover;
+  }
+}

@@ -75,25 +75,11 @@
               justify-content: end;
               height: 20px;
               .list-item-edit {
-                cursor: pointer;
-                border-radius: 5px;
-                border: 1px solid $todo_items_btn_border;
-                padding: 2px 5px;
-                font-weight: bold;
-                &:hover {
-                  background: $bg_todo_items_btn_hover;
-                }
+                @include todo_btn;
               }
               .list-item-delete {
                 margin-left: 10px;
-                cursor: pointer;
-                border-radius: 5px;
-                padding: 2px 5px;
-                border: 1px solid $todo_items_btn_border;
-                font-weight: bold;
-                &:hover {
-                  background: $bg_todo_items_btn_hover;
-                }
+                @include todo_btn;
               }
             }
           }

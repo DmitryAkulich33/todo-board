@@ -1,0 +1,9 @@
+@mixin popup_btn {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid $popup_btn_border;
+  padding: 2px 5px;
+  &:hover {
+    background: $bg_popup_btn_hover;
+  }
+}

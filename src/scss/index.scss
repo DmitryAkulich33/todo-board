@@ -1,5 +1,7 @@
 @import 'variables/fontsizes.scss';
 @import 'variables/colors.scss';
+@import 'mixins/todoButton.scss';
+@import 'mixins/popupButton.scss';
 @import 'boards.scss';
 @import 'header.scss';
 @import 'popupTodo.scss';
