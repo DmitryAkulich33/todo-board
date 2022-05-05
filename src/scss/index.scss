@@ -1,3 +1,5 @@
+@import 'variables/fontsizes.scss';
+@import 'variables/colors.scss';
 @import 'boards.scss';
 @import 'header.scss';
 @import 'popupTodo.scss';
@@ -22,3 +24,21 @@ body {
   padding: 0px 15px;
   margin: auto;
 }
+
+// html {
+//   @media (max-width: 1200px) {
+//     font-size: 14px;
+//   }
+//   @media (max-width: 1024px) {
+//     font-size: 12px;
+//   }
+//   @media (max-width: 768px) {
+//     font-size: 11px;
+//   }
+//   @media (max-width: 600px) {
+//     font-size: 10px;
+//   }
+//   @media (max-width: 480px) {
+//     font-size: 9px;
+//   }
+// }

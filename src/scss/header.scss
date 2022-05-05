@@ -5,7 +5,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: $bg_header;
       border-radius: 5px;
       padding: 15px;
       .header-logo {
@@ -16,11 +16,11 @@
         }
       }
       .header-clock {
-        background-color: white;
+        background-color: $bg_clock;
         padding: 5px 10px;
         border-radius: 5px;
         .clock {
-          font-size: 16px;
+          font-size: $_16px;
           font-weight: bold;
         }
       }

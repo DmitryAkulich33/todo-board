@@ -59,7 +59,7 @@ const defaultTodos = [
     description:
       'Choose app to implement. \nCreate structure of new app. \nImplement all features mentioned in tech debt. \nTest it. \nFix bugs and prepare to demonstrate app.',
     state: 'new',
-    date: '29.04.2022',
+    date: '30.04.2022',
     userId: 6,
   },
 ];
