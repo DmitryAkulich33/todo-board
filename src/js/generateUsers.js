@@ -1,7 +1,7 @@
+import { URL } from './constants.js';
+
 function getUsersFromApi() {
-  return fetch('https://jsonplaceholder.typicode.com/users').then((response) =>
-    response.json()
-  );
+  return fetch(URL).then((response) => response.json());
 }
 
 export default getUsersFromApi;

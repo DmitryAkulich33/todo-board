@@ -6,6 +6,7 @@ import {
   removeWarningPopup,
 } from './createWarningPopup.js';
 import { createNewItemActions } from './createTodoItem.js';
+import { MAX_COUNT_ITEMS_MESSAGE } from './constants.js';
 
 let draggedItem = null;
 
@@ -52,10 +53,7 @@ function dragDrop(event) {
   const list = board.querySelector('.list');
 
   if (list.childElementCount >= 6 && list.closest('#boards-item_in-progress')) {
-    createWarningPopup(
-      '6 items is a maximum count of todo items in this boards',
-      false
-    );
+    createWarningPopup(MAX_COUNT_ITEMS_MESSAGE, false);
     const confirmBtn = document.querySelector('.warning-popup-confirm-btn');
 
     confirmBtn.addEventListener('click', (event) => {

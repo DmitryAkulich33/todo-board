@@ -10,6 +10,7 @@ import calculateTodoCounts from './calculateTodoCounts.js';
 import checkPopupFields from './checkPopupFields.js';
 import { addDragEventsForElement } from './addDragAndDropEvents.js';
 import { parseItemId } from './parser.js';
+import { DELETE_ALL_MESSAGE, STATE_COMPLETED } from './constants.js';
 
 function addEventListeners() {
   const addBtn = document.querySelector('.add-btn');
@@ -44,7 +45,7 @@ function addEventListeners() {
   });
 
   deleteAll.addEventListener('click', () => {
-    createWarningPopup('Do you really want to delete all items?', true);
+    createWarningPopup(DELETE_ALL_MESSAGE, true);
     const cancelBtn = document.querySelector('.warning-popup-cancel-btn');
     const confirmBtn = document.querySelector('.warning-popup-confirm-btn');
 
@@ -59,11 +60,7 @@ function addEventListeners() {
       const completedList = completedBoard.querySelector('.list');
       completedList.innerHTML = '';
 
-      todos.forEach((elem, index) => {
-        if (elem.state == 'completed') {
-          todos.splice(index, 1);
-        }
-      });
+      removeAllCompletedTodo();
       setTodosInStorage();
       removeWarningPopup();
       calculateTodoCounts();
@@ -141,6 +138,7 @@ function updateTodoArray(elem) {
   elem.title = newTitle;
   elem.description = newDescription;
   elem.userId = newUserId;
+  elem.date = new Date().toLocaleDateString();
 
   return elem;
 }
@@ -149,10 +147,21 @@ function updateTodoElement(item, elem) {
   const title = item.querySelector('.list-item-title');
   const description = item.querySelector('.list-item-description');
   const userInfo = item.querySelector('.user-info');
+  const dateInfo = item.querySelector('.time-info');
 
   title.innerHTML = elem.title;
   description.innerHTML = elem.description;
   userInfo.innerHTML = users.find((item) => item.id == elem.userId).name;
+  dateInfo.innerHTML = new Date().toLocaleDateString();
+}
+
+function removeAllCompletedTodo() {
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].state == STATE_COMPLETED) {
+      todos.splice(i, 1);
+      i--;
+    }
+  }
 }
 
 export { addEventListeners };

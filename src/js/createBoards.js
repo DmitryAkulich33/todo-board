@@ -1,5 +1,6 @@
 import { todos, users } from './customStorage.js';
 import { createTodoItem } from './createTodoItem.js';
+import * as Constants from './constants.js';
 
 function createBoards() {
   const lists = document.querySelectorAll('.list');
@@ -13,11 +14,11 @@ function createBoards() {
 
 function getBoardIndex(state) {
   switch (state) {
-    case 'new':
+    case Constants.STATE_NEW:
       return 0;
-    case 'in progress':
+    case Constants.STATE_IN_PROGRESS:
       return 1;
-    case 'completed':
+    case Constants.STATE_COMPLETED:
       return 2;
     default:
       return 0;

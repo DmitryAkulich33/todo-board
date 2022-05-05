@@ -1,4 +1,5 @@
 import createElement from './createElement.js';
+import { STATE_NEW, STATE_COMPLETED } from './constants.js';
 
 function createNewItemTitle(item) {
   const newItemTitle = createElement('div', 'list-item-title');
@@ -31,11 +32,11 @@ function createNewItemInfo(item, user) {
 }
 
 function populateButtons(item, editBtn, deleteBtn, boardState) {
-  if (boardState == 'new') {
+  if (boardState == STATE_NEW) {
     item.append(editBtn, deleteBtn);
   }
 
-  if (boardState == 'completed') {
+  if (boardState == STATE_COMPLETED) {
     item.append(deleteBtn);
   }
 }
