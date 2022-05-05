@@ -21,6 +21,24 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      @media (max-width: 1200px) {
+        max-width: 30vw;
+      }
+      @media (max-width: 900px) {
+        max-width: 40vw;
+      }
+      @media (max-width: 768px) {
+        max-width: 45vw;
+      }
+      @media (max-width: 600px) {
+        max-width: 50vw;
+      }
+      @media (max-width: 480px) {
+        max-width: 75vw;
+      }
+      @media (max-width: 320px) {
+        max-width: 80vw;
+      }
       .warning-popup-text {
         font-size: $_20px;
         text-align: center;

@@ -17,6 +17,24 @@
       max-width: 30vw;
       width: 100%;
       padding: 30px;
+      @media (max-width: 1200px) {
+        max-width: 40vw;
+      }
+      @media (max-width: 900px) {
+        max-width: 50vw;
+      }
+      @media (max-width: 768px) {
+        max-width: 55vw;
+      }
+      @media (max-width: 600px) {
+        max-width: 60vw;
+      }
+      @media (max-width: 480px) {
+        max-width: 85vw;
+      }
+      @media (max-width: 320px) {
+        max-width: 90vw;
+      }
       .todo-popup-form-add {
         width: 100%;
         margin-top: 5px;
@@ -47,6 +65,15 @@
           margin-top: 7px;
           font-family: 'Times New Roman', Times, serif;
           height: 20vh;
+          @media (max-width: 900px) {
+            height: 15vh;
+          }
+          @media (max-width: 768px) {
+            height: 12vh;
+          }
+          @media (max-width: 600px) {
+            height: 10vh;
+          }
         }
         .todo-popup-form-actions {
           display: flex;
@@ -58,6 +85,7 @@
             border-radius: 5px;
             border: 1px solid $popup_btn_border;
             padding: 2px 5px;
+            font-size: $_14px;
           }
           .todo-popup-form-buttons {
             display: flex;

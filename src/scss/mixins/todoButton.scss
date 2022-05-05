@@ -4,6 +4,7 @@
   padding: 2px 5px;
   border: 1px solid $todo_items_btn_border;
   font-weight: bold;
+  font-size: $_14px;
   &:hover {
     background: $bg_todo_items_btn_hover;
   }

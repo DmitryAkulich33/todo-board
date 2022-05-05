@@ -1,7 +1,7 @@
 const defaultTodos = [
   {
     id: 1,
-    title: 'Homework 1. Git.',
+    title: 'Homework 1. Git. Introduction.',
     description:
       'Download and install git.\nCreate repository and clone it locally. \nCreate a new branch. \nPush code there. \nCreate pull request.',
     state: 'completed',
@@ -55,7 +55,7 @@ const defaultTodos = [
   },
   {
     id: 7,
-    title: 'Homework 7. Final project.',
+    title: 'Homework 7. Final project. End of course',
     description:
       'Choose app to implement. \nCreate structure of new app. \nImplement all features mentioned in tech debt. \nTest it. \nFix bugs and prepare to demonstrate app.',
     state: 'new',
