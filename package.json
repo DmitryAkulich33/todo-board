@@ -5,9 +5,9 @@
   "source": "src/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --public-url ./",
+    "deploy": "rm -rf dist/ && npm run build && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,10 @@
   "bugs": {
     "url": "https://github.com/DmitryAkulich33/todo-board/issues"
   },
-  "homepage": "https://github.com/DmitryAkulich33/todo-board#readme",
+  "homepage": "https://github.com/DmitryAkulich33/todo-board",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.5.0",
+    "gh-pages": "^3.2.3",
     "parcel": "^2.5.0"
   }
 }
